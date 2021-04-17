@@ -5,12 +5,11 @@ var cors = require('cors')
 
 app.use(cors())
 require('dotenv').config()
-const username = process.env.MONGO_USERNAME
-const password = process.env.MONGO_PASSWORD
+const mongo_uri = process.env.MONGO_URI
 
 
 const mongoose = require('mongoose');
-mongoose.connect(`mongodb+srv://${username}:${password}@cluster0.lbdpt.mongodb.net/whiteboard?retryWrites=true&w=majority`, {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect(mongo_uri, {useNewUrlParser: true, useUnifiedTopology: true});
 
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
